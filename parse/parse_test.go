@@ -3,6 +3,7 @@ package parse
 import (
 	"testing"
 
+	"github.com/brittonhayes/roll"
 	"github.com/rs/zerolog"
 	"github.com/stretchr/testify/assert"
 )
@@ -12,26 +13,59 @@ func init() {
 }
 
 func TestMatch_valid(t *testing.T) {
-	t.Run("pattern is valid", func(t *testing.T) {
-		got := "1d12"
+	tests := []struct {
+		name  string
+		got   string
+		valid bool
+	}{
+		{
+			name: "pattern is valid",
+			got:  "1d12",
+		},
+		{
+			name: "pattern with addition modifier is valid",
+			got:  "1d6+3",
+		},
+		{
+			name: "pattern with subtraction modifier is valid",
+			got:  "1d6-3",
+		},
+	}
 
-		_, err := Match(got)
-		assert.NoError(t, err)
-	})
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			_, err := Match(tt.got)
+			assert.NoError(t, err)
+		})
+	}
+}
 
-	t.Run("pattern with addition modifier is valid", func(t *testing.T) {
-		got := "1d6+3"
+func TestMatch_invalid(t *testing.T) {
+	tests := []struct {
+		name  string
+		got   string
+		valid bool
+	}{
+		{
+			name: "pattern with no quantity is invalid",
+			got:  "d6",
+		},
+		{
+			name: "pattern with no quantity and modifier is invalid",
+			got:  "d6+1",
+		},
+		{
+			name: "pattern with zero quantity is invalid",
+			got:  "0d6",
+		},
+	}
 
-		_, err := Match(got)
-		assert.NoError(t, err)
-	})
-
-	t.Run("pattern with subtraction modifier is valid", func(t *testing.T) {
-		got := "1d12-3"
-
-		_, err := Match(got)
-		assert.NoError(t, err)
-	})
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			_, err := Match(tt.got)
+			assert.Error(t, err)
+		})
+	}
 }
 
 func TestMatch(t *testing.T) {
@@ -64,7 +98,15 @@ func TestMatch(t *testing.T) {
 func TestParser(t *testing.T) {
 	t.Run("create parser and roll", func(t *testing.T) {
 		p, err := NewParser("1d6+2")
+
 		if assert.NoError(t, err) {
+			assert.EqualValues(t, Parser{
+				Quantity: 1,
+				Dice:     []*roll.Die{{Min: 1, Max: 6}},
+				Operator: "+",
+				Modifier: 2},
+				*p)
+
 			assert.Positive(t, p.Roll())
 		}
 	})

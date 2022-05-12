@@ -28,7 +28,7 @@ type Parser struct {
 	Modifier int
 }
 
-const pattern = `^(?P<quantity>\d+)(?P<die>d\d+)(?P<operator>[-+]?)(?P<modifier>\d+?)?$`
+const pattern = `^(?P<quantity>[1-9][0-9]*)(?P<die>d\d+)(?P<operator>[-+]?)(?P<modifier>\d+?)?$`
 
 func Match(s string) ([]string, error) {
 	regex, err := regexp.Compile(pattern)
@@ -64,7 +64,7 @@ func NewParser(s string) (*Parser, error) {
 		return nil, errors.Wrap(err, "failed to convert die signature to int")
 	}
 
-	for i := 0; i <= p.Quantity; i++ {
+	for i := 1; i <= p.Quantity; i++ {
 		// Apply die to formula
 		die, err := roll.NewDie(1, max)
 		if err != nil {
