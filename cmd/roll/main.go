@@ -29,9 +29,9 @@ func main() {
 		}))
 
 	log.Logger = log.Output(zerolog.ConsoleWriter{Out: os.Stderr})
-	zerolog.SetGlobalLevel(zerolog.InfoLevel)
+	zerolog.SetGlobalLevel(zerolog.Disabled)
 	if *&CLI.Verbose {
-		zerolog.SetGlobalLevel(zerolog.DebugLevel)
+		zerolog.SetGlobalLevel(zerolog.InfoLevel)
 	}
 
 	p, err := parse.NewParser(CLI.Dice)

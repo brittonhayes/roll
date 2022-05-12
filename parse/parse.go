@@ -85,7 +85,7 @@ func NewParser(s string) (*Parser, error) {
 		}
 	}
 
-	log.Debug().Msgf("found %q", p.String())
+	log.Info().Msgf("found %q", p.String())
 
 	return p, nil
 }
@@ -100,17 +100,17 @@ func (p *Parser) Roll() int {
 	results := 0
 	for i, die := range p.Dice {
 		roll := die.Roll()
-		log.Debug().Msgf("rolled %d with %s", roll, p.Dice[i])
+		log.Info().Msgf("rolled %d with %s", roll, p.Dice[i])
 
 		results += roll
 	}
 
 	switch p.Operator {
 	case "+":
-		log.Debug().Msgf("adding %d", p.Modifier)
+		log.Info().Msgf("adding %d", p.Modifier)
 		return results + p.Modifier
 	case "-":
-		log.Debug().Msgf("subtracting %d", p.Modifier)
+		log.Info().Msgf("subtracting %d", p.Modifier)
 		return results - p.Modifier
 	default:
 		return results

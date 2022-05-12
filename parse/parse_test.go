@@ -8,7 +8,7 @@ import (
 )
 
 func init() {
-	zerolog.SetGlobalLevel(zerolog.InfoLevel)
+	zerolog.SetGlobalLevel(zerolog.Disabled)
 }
 
 func TestMatch_valid(t *testing.T) {
