@@ -28,7 +28,7 @@ type Parser struct {
 	Modifier int
 }
 
-const pattern = `^(?P<quantity>\d+)(?P<die>d\d+)(?P<operator>[-+]?)(?P<modifier>\d+?)?$`
+const pattern = `^(?P<quantity>[1-9][0-9]*)(?P<die>d\d+)(?P<operator>[-+]?)(?P<modifier>\d+?)?$`
 
 func Match(s string) ([]string, error) {
 	regex, err := regexp.Compile(pattern)
