@@ -37,7 +37,7 @@ func main() {
 	p, err := parse.NewParser(CLI.Dice)
 	ctx.FatalIfErrorf(err)
 
-	s := spinner.New(spinner.CharSets[2], 75*time.Millisecond, spinner.WithSuffix(" Rolling..."))
+	s := spinner.New(spinner.CharSets[2], 100*time.Millisecond, spinner.WithSuffix(" Rolling..."))
 	s.Start()
 	defer s.Stop()
 	result := p.Roll()
