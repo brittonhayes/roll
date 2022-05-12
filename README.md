@@ -2,6 +2,8 @@
 
 [![Go Reference](https://pkg.go.dev/badge/github.com/brittonhayes/roll.svg)](https://pkg.go.dev/github.com/brittonhayes/roll)
 ![Latest Release](https://img.shields.io/github/v/release/brittonhayes/roll?label=latest%20release)
+[![Lint](https://github.com/brittonhayes/roll/actions/workflows/lint.yml/badge.svg)](https://github.com/brittonhayes/roll/actions/workflows/lint.yml)
+[![Test](https://github.com/brittonhayes/roll/actions/workflows/test.yml/badge.svg)](https://github.com/brittonhayes/roll/actions/workflows/test.yml)
 [![Go Report Card](https://goreportcard.com/badge/github.com/brittonhayes/roll)](https://goreportcard.com/report/github.com/brittonhayes/roll)
 
 A simple Go package and CLI for dice rolling.
