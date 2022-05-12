@@ -47,6 +47,10 @@ roll 1d6
 roll 1d6+2
 ```
 
+## 📺 Preview
+
+[![asciicast](https://asciinema.org/a/ylBbsg1NjKb8WVciMUnoJSEgG.svg)](https://asciinema.org/a/ylBbsg1NjKb8WVciMUnoJSEgG)
+
 ### Package
 
 Using the package
