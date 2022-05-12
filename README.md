@@ -12,25 +12,28 @@ How to use Roll as a CLI or a library
 
 ### CLI
 
-Installation
+Installation via Go or Docker
 
 ```bash
-# Install
+# Go
 go install github.com/brittonhayes/roll/cmd/roll
+```
+
+```bash
+# Docker
+docker run --rm -it ghcr.io/brittonhayes/roll:latest 1d6+2
 ```
 
 Using the command line tool
 
 ```bash
 # Run the CLI
-roll --help
-
 Usage: roll <dice>
 
 A simple CLI for dice rolling
 
 Arguments:
-  <dice>
+  <dice>    Dice to roll +/- modifiers e.g. 'roll 1d6', 'roll 2d12+20', or 'roll 1d20-5'
 
 Flags:
   -h, --help            Show context-sensitive help.

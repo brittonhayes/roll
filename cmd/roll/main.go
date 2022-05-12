@@ -16,7 +16,7 @@ var CLI struct {
 	Verbose bool `help:"Display verbose log output" short:"v" env:"VERBOSE" default:"false"`
 
 	SkipSpinner bool   `help:"Skip loading spinner" short:"s" env:"SKIP_SPINNER" default:"false"`
-	Dice        string `arg:"" required:""`
+	Dice        string `arg:"" help:"Dice to roll +/- modifiers e.g. 'roll 1d6', 'roll 2d12+20', or 'roll 1d20-5'" required:""`
 }
 
 func main() {
