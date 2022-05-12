@@ -64,7 +64,7 @@ func NewParser(s string) (*Parser, error) {
 		return nil, errors.Wrap(err, "failed to convert die signature to int")
 	}
 
-	for i := 0; i <= p.Quantity; i++ {
+	for i := 1; i <= p.Quantity; i++ {
 		// Apply die to formula
 		die, err := roll.NewDie(1, max)
 		if err != nil {

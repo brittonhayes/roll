@@ -3,6 +3,7 @@ package parse
 import (
 	"testing"
 
+	"github.com/brittonhayes/roll"
 	"github.com/rs/zerolog"
 	"github.com/stretchr/testify/assert"
 )
@@ -64,7 +65,15 @@ func TestMatch(t *testing.T) {
 func TestParser(t *testing.T) {
 	t.Run("create parser and roll", func(t *testing.T) {
 		p, err := NewParser("1d6+2")
+
 		if assert.NoError(t, err) {
+			assert.EqualValues(t, Parser{
+				Quantity: 1,
+				Dice:     []*roll.Die{{Min: 1, Max: 6}},
+				Operator: "+",
+				Modifier: 2},
+				*p)
+
 			assert.Positive(t, p.Roll())
 		}
 	})
