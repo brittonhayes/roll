@@ -37,10 +37,10 @@ func main() {
 	p, err := parse.NewParser(CLI.Dice)
 	ctx.FatalIfErrorf(err)
 
-	s := spinner.New(spinner.CharSets[2], 100*time.Millisecond, spinner.WithSuffix(" Rolling..."))
+	s := spinner.New(spinner.CharSets[2], 150*time.Millisecond, spinner.WithSuffix(" Rolling..."))
+	result := p.Roll()
 	s.Start()
 	defer s.Stop()
-	result := p.Roll()
 	s.FinalMSG = fmt.Sprintf("🎲 %d\n", result)
 
 	if !CLI.SkipSpinner {
