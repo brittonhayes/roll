@@ -1,0 +1,18 @@
+version: '3'
+
+tasks:
+  default:
+    cmds:
+      - task: install
+      - task: test
+    silent: true
+
+  install:
+    desc: Install the CLI
+    cmds:
+      - go install ./cmd/roll
+
+  test:
+    desc: Run test suite
+    cmds:
+      - go test -race ./...

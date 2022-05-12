@@ -1,12 +1,24 @@
 package roll
 
 import (
+	crypto "crypto/rand"
+	"encoding/binary"
 	"fmt"
-	"math/rand"
-	"time"
+	rand "math/rand"
 
 	"github.com/go-playground/validator/v10"
 )
+
+func init() {
+	var b [8]byte
+	_, err := crypto.Read(b[:])
+	if err != nil {
+		panic("cannot seed math/rand package with cryptographically secure random number generator")
+	}
+
+	// Generate cryptographically random seed
+	rand.Seed(int64(binary.LittleEndian.Uint64(b[:])))
+}
 
 var validate = validator.New()
 
@@ -42,7 +54,6 @@ func (d *Die) Validate() error {
 
 // Roll performs a roll of a single die
 func (d *Die) Roll() int {
-	rand.Seed(time.Now().UnixNano())
 	return rand.Intn(d.Max-d.Min+1) + d.Min
 }
 
