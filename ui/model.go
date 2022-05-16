@@ -151,16 +151,16 @@ func (m Model) PrevDie() (tea.Model, tea.Cmd) {
 func (m Model) SetStatus() (tea.Model, tea.Cmd) {
 	m.hand = m.Selection()
 	if m.help.ShowAll {
-		m.status.SetContent(m.icon, fmt.Sprintf("History: %s", m.history), fmt.Sprintf("#: %dx", m.quantity), fmt.Sprintf("Selection: %s", m.dice[m.cursor]))
+		m.status.SetContent(m.icon, fmt.Sprintf("History: %s", m.history), fmt.Sprintf("Quantity: %dx", m.quantity), fmt.Sprintf("Die: %s", m.dice[m.cursor]))
 		return m, nil
 	}
 
-	m.status.SetContent(m.icon, fmt.Sprintf("History: %s", m.history), fmt.Sprintf("%dx", m.quantity), fmt.Sprintf("%s", m.dice[m.cursor]))
+	m.status.SetContent(m.icon, fmt.Sprintf("History: %s", m.history), fmt.Sprintf("%dx", m.quantity), m.dice[m.cursor])
 	return m, nil
 }
 
 func (m Model) Roll() (tea.Model, tea.Cmd) {
-	if m.valid == false {
+	if !m.valid {
 		return m, nil
 	}
 

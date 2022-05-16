@@ -7,12 +7,9 @@ import (
 	"strings"
 
 	"github.com/brittonhayes/roll"
-	"github.com/go-playground/validator/v10"
 	"github.com/pkg/errors"
 	"github.com/rs/zerolog/log"
 )
-
-var validate = validator.New()
 
 const (
 	indexQuantity int = iota
