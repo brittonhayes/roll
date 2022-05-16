@@ -17,10 +17,10 @@ func TestDice_String(t *testing.T) {
 		fields fields
 		want   string
 	}{
-		{name: "D6", fields: fields{Min: 1, Max: 6}, want: "D6"},
-		{name: "D12", fields: fields{Min: 1, Max: 12}, want: "D12"},
-		{name: "D20", fields: fields{Min: 1, Max: 20}, want: "D20"},
-		{name: "D100", fields: fields{Min: 1, Max: 100}, want: "D100"},
+		{name: "D6", fields: fields{Min: 1, Max: 6}, want: "d6"},
+		{name: "D12", fields: fields{Min: 1, Max: 12}, want: "d12"},
+		{name: "D20", fields: fields{Min: 1, Max: 20}, want: "d20"},
+		{name: "D100", fields: fields{Min: 1, Max: 100}, want: "d100"},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {

@@ -91,7 +91,11 @@ func NewParser(s string) (*Parser, error) {
 }
 
 func (p *Parser) String() string {
-	return fmt.Sprintf("%d %s %s %d", p.Quantity, p.Dice[0], p.Operator, p.Modifier)
+	if p.Modifier == 0 {
+		return fmt.Sprintf("%dx %s", p.Quantity, p.Dice[0])
+	}
+
+	return fmt.Sprintf("%dx %s %s %d", p.Quantity, p.Dice[0], p.Operator, p.Modifier)
 }
 
 // Roll rolls the dice with modifiers

@@ -43,7 +43,7 @@ func NewDie(min, max int) (*Die, error) {
 // String returns the string representation of
 // the die
 func (d Die) String() string {
-	return fmt.Sprintf("D%d", d.Max)
+	return fmt.Sprintf("d%d", d.Max)
 }
 
 // Validate ensures that the Dice are in a valid
