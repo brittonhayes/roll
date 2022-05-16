@@ -7,12 +7,9 @@ import (
 	"strings"
 
 	"github.com/brittonhayes/roll"
-	"github.com/go-playground/validator/v10"
 	"github.com/pkg/errors"
 	"github.com/rs/zerolog/log"
 )
-
-var validate = validator.New()
 
 const (
 	indexQuantity int = iota
@@ -91,7 +88,11 @@ func NewParser(s string) (*Parser, error) {
 }
 
 func (p *Parser) String() string {
-	return fmt.Sprintf("%d %s %s %d", p.Quantity, p.Dice[0], p.Operator, p.Modifier)
+	if p.Modifier == 0 {
+		return fmt.Sprintf("%dx %s", p.Quantity, p.Dice[0])
+	}
+
+	return fmt.Sprintf("%dx %s %s %d", p.Quantity, p.Dice[0], p.Operator, p.Modifier)
 }
 
 // Roll rolls the dice with modifiers
