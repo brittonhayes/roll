@@ -181,7 +181,7 @@ func (m Model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 		m.height = msg.Height
 		m.help.Width = msg.Width
 		m.status.SetSize(msg.Width)
-		m.status.SetContent(m.icon, "", fmt.Sprint(m.quantity), m.dice[m.cursor])
+		m.status.SetContent(m.icon, "", fmt.Sprintf("%dx", m.quantity), m.dice[m.cursor])
 
 	case tea.KeyMsg:
 		switch {
