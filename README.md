@@ -51,7 +51,7 @@ roll 1d6+2
 
 ## 📺 Preview
 
-[![asciicast](https://asciinema.org/a/ylBbsg1NjKb8WVciMUnoJSEgG.svg)](https://asciinema.org/a/ylBbsg1NjKb8WVciMUnoJSEgG)
+[![asciicast](https://asciinema.org/a/Y6fr83QRjSb0SKJm5ISVWJM6w.svg)](https://asciinema.org/a/Y6fr83QRjSb0SKJm5ISVWJM6w)
 
 ### Package
 
